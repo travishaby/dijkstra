@@ -1,0 +1,5 @@
+require 'minitest/autorun'
+require 'minitest/emoji'
+require 'pry'
+require_relative '../lib/edge.rb'
+require_relative '../lib/vertex.rb'
