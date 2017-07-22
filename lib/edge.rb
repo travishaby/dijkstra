@@ -5,4 +5,8 @@ class Edge
     @terminus = terminus
     @length = length
   end
+
+  def <=>(comparison_edge)
+    length <=> comparison_edge.length
+  end
 end

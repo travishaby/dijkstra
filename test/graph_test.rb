@@ -48,4 +48,27 @@ describe Graph do
       end
     end
   end
+  describe '#find_shortest_path_from_vertex' do
+    let(:graph) { Graph.new }
+    let(:a) { Vertex.new('a') }
+    let(:b) { Vertex.new('b') }
+    let(:c) { Vertex.new('c') }
+    let(:d) { Vertex.new('d') }
+    let(:edge1) { Edge.new(start: a, terminus: b, length: 3) }
+    let(:edge2) { Edge.new(start: a, terminus: c, length: 4) }
+    let(:edge3) { Edge.new(start: a, terminus: d, length: 6) }
+
+    before do
+      graph.add_vertex(a)
+      graph.add_vertex(b)
+      graph.add_vertex(c)
+      graph.add_edge(edge1)
+      graph.add_edge(edge2)
+      graph.add_edge(edge3)
+    end
+
+    it 'can find the shortest route from one vertex given many paths' do
+      expect(graph.find_shortest_path_from_vertex(a)).must_equal edge1
+    end
+  end
 end
