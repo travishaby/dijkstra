@@ -1,5 +1,3 @@
-require_relative 'path'
-
 class Graph
   attr_reader :vertices, :edges, :remaining, :current_distances
   def initialize
