@@ -15,9 +15,9 @@ class Graph
     current_distances[start.id] = 0
   end
 
-  def dijkstra(start, finish)
-    setup_distances(start)
-    current_vertex = start
+  def dijkstra(start_vertex, end_vertex)
+    setup_distances(start_vertex)
+    current_vertex = start_vertex
     while !remaining.empty?
       edges = find_connected_edges(current_vertex)
       edges.each do |e|
@@ -28,8 +28,11 @@ class Graph
         end
       end
       remaining.delete(current_vertex.id)
-      return current_distances[current_vertex.id] if find_shortest_edge(current_vertex).terminus == finish
-      current_vertex = edges.min.terminus
+      if remaining.empty?
+        return current_distances[end_vertex.id]
+      else
+        current_vertex = edges.min ? edges.min.terminus : remaining[remaining.keys.sample]
+      end
     end
   end
 
